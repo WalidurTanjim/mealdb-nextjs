@@ -1,16 +1,18 @@
 import React from 'react';
 import MealSearchInput from './component/MealSearchInput';
+import style from "./meals.module.css";
+import Link from 'next/link';
 
-const Meals = async({ searchParams }) => {
+const Meals = async ({ searchParams }) => {
     const search = await searchParams;
-    
+
     // fetch meals
-    const fetchMeals = async() => {
-        try{
+    const fetchMeals = async () => {
+        try {
             const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search?.search}`);
             const data = await res.json();
             return data?.meals;
-        }catch(err){
+        } catch (err) {
             console.error(err);
             return [];
         }
@@ -29,9 +31,11 @@ const Meals = async({ searchParams }) => {
                     {
                         meals?.map(meal => {
                             return (
-                                <div className='outline-none border border-gray-300 rounded-md p-2 hover:shadow-md'>
-                                    <h1>{meal?.strMeal}</h1>
-                                </div>
+                                <Link key={meal?.idMeal} href={`/meals/${meal?.idMeal}`}>
+                                    <div className='outline-none border border-gray-300 rounded-md p-2 hover:shadow-md'>
+                                        <h1 className={`${style.meal_title}`}>{meal?.strMeal}</h1>
+                                    </div>
+                                </Link>
                             )
                         })
                     }
