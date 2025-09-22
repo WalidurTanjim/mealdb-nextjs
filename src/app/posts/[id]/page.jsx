@@ -11,6 +11,17 @@ export const fetchSinglePost = async(id) => {
     }
 }
 
+export const generateMetadata = async({ params }) => {
+    const idParams = await params;
+    const id = await idParams?.id;
+    const singlePost = await fetchSinglePost(id);
+
+    return {
+        title: singlePost?.title,
+        description: singlePost?.body
+    }
+}
+
 const SinglePost = async({ params }) => {
     const idParams = await params;
     const id = await idParams?.id;

@@ -12,7 +12,7 @@ export const fetchPosts = async () => {
     }
 }
 
-export const meatadata = {
+export const metadata = {
     title: "All Posts",
     description: "Loading Posts from jsonplaceholder using server components"
 }
