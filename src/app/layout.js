@@ -13,6 +13,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// const poppins = Poppins({
+//   variable: "--font-poppins",
+//   subsets: ["latin"]
+// })
+
+// const roboto = Roboto({
+//   variable: "--font-roboto",
+//   subsets: ["latin"]
+// })
+
 export const metadata = {
   title: {
     default: "Learning NextJS",
