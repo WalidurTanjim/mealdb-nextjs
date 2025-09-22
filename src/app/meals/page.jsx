@@ -3,6 +3,12 @@ import MealSearchInput from './component/MealSearchInput';
 import style from "./meals.module.css";
 import Link from 'next/link';
 
+// metadata
+export const metadata = {
+    title: "All Meals",
+    description: "Loading MealDB meals using server components",
+};
+
 const Meals = async ({ searchParams }) => {
     const search = await searchParams;
 
