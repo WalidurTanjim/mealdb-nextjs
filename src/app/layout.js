@@ -18,8 +18,11 @@ export const metadata = {
     default: "Learning NextJS",
     template: "%s | Learning NextJS"
   },
-  keywords: ['JavaScript', 'React', 'Next.js', 'Learning', 'MERN stack', 'Full stack'],
   description: "Trying to learn NextJS as well as we can.",
+  keywords: ['JavaScript', 'React', 'Next.js', 'Learning', 'MERN stack', 'Full stack'],
+  authors: [{ name: "Walidur Tanjim", url: "https://bespoke-pothos-08eb7a.netlify.app" }],
+  creator: "Walidur Tanjim",
+  publiser: "Walidur Tanjim"
 };
 
 export default function RootLayout({ children }) {
