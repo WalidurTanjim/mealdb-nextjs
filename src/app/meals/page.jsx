@@ -2,6 +2,7 @@ import React from 'react';
 import MealSearchInput from './component/MealSearchInput';
 import style from "./meals.module.css";
 import Link from 'next/link';
+import Image from 'next/image';
 
 // metadata
 export const metadata = {
@@ -25,6 +26,7 @@ const Meals = async ({ searchParams }) => {
     }
 
     const meals = await fetchMeals();
+    // console.log("All meals:", meals);
 
     return (
         <div className='meals'>
@@ -33,13 +35,18 @@ const Meals = async ({ searchParams }) => {
 
                 <MealSearchInput />
 
-                <div className="mt-8 grid gap-5 grid-cols-1 sm:grid-cols-2:md:grid-cols-3 lg:grid-cols-4">
+                <div className="mt-8 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {
                         meals?.map(meal => {
                             return (
                                 <Link key={meal?.idMeal} href={`/meals/${meal?.idMeal}`}>
                                     <div className='outline-none border border-gray-300 rounded-md p-2 hover:shadow-md'>
-                                        <h1 className={`${style.meal_title}`}>{meal?.strMeal}</h1>
+                                        <Image src={meal?.strMealThumb} alt={meal?.strMeal} width={100} height={100} loading='lazy' quality={100} blurDataURL="blur" className='w-full h-[175px] rounded' />
+
+                                        <div className="mt-3">
+                                            <h1 className={`${style.meal_title}`}>{meal?.strMeal}</h1>
+                                            <p className='text-sm text-slate-700'>{meal?.strInstructions.slice(0, 175)}...</p>
+                                        </div>
                                     </div>
                                 </Link>
                             )

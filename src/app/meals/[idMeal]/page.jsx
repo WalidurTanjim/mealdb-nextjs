@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 export const getSingleMeal = async (id) => {
@@ -11,10 +12,10 @@ export const getSingleMeal = async (id) => {
     }
 }
 
-export const generateMetadata = async({ params }) => {
+export const generateMetadata = async ({ params }) => {
     const idMealParams = await params;
     const idMeal = await idMealParams?.idMeal;
-    
+
     // fetch single meal
     const singleMeal = await getSingleMeal(idMeal);
 
@@ -36,8 +37,12 @@ const SingleMeal = async ({ params }) => {
                     <h1 className='text-center text-2xl text-slate-700 font-medium'>Single Meal</h1>
 
                     <div className="mt-8">
-                        <h1 className='text-lg font-medium text-slate-700'><span className='text-slate-600'>Name: </span>{meal?.strMeal}</h1>
-                        <p className='text-lg text-slate-700'><span className='font-medium text-slate-600'>Description: </span>{meal?.strInstructions}</p>
+                        <Image src={meal?.strMealThumb} alt={meal?.strMeal} width={100} height={100} quality={100} className='w-full h-[175px] md:h-[250ox] lg:h-[450px] xl:h-[575px] rounded' />
+
+                        <div className='mt-5'>
+                            <h1 className='text-lg font-medium text-slate-700'><span className='text-slate-600'>Name: </span>{meal?.strMeal}</h1>
+                            <p className='text-lg text-slate-700'><span className='font-medium text-slate-600'>Description: </span>{meal?.strInstructions}</p>
+                        </div>
                     </div>
                 </div>
             </div>
