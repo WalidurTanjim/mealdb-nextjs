@@ -41,7 +41,7 @@ const Meals = async ({ searchParams }) => {
                             return (
                                 <Link key={meal?.idMeal} href={`/meals/${meal?.idMeal}`}>
                                     <div className='outline-none border border-gray-300 rounded-md p-2 hover:shadow-md'>
-                                        <Image src={meal?.strMealThumb} alt={meal?.strMeal} width={100} height={100} loading='lazy' quality={100} blurDataURL="blur" className='w-full h-[175px] rounded' />
+                                        <Image src={meal?.strMealThumb} alt={meal?.strMeal} width={1000} height={1000} loading='lazy' quality={100} blurDataURL="blur" className='w-full h-[175px] rounded' />
 
                                         <div className="mt-3">
                                             <h1 className={`${style.meal_title}`}>{meal?.strMeal}</h1>
