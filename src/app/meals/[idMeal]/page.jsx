@@ -11,15 +11,15 @@ export const getSingleMeal = async (id) => {
     }
 }
 
-export async function generateMetadata({ params }){
+export const generateMetadata = async({ params }) => {
     const idMealParams = await params;
     const idMeal = await idMealParams?.idMeal;
-
+    
     // fetch single meal
     const singleMeal = await getSingleMeal(idMeal);
 
     return {
-        title: singleMeal?.title,
+        title: singleMeal?.strMeal,
         description: singleMeal?.strInstructions
     }
 }
