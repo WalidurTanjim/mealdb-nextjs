@@ -12,6 +12,11 @@ export const fetchPosts = async () => {
     }
 }
 
+export const meatadata = {
+    title: "All Posts",
+    description: "Loading Posts from jsonplaceholder using server components"
+}
+
 const Posts = async () => {
     const posts = await fetchPosts();
 
