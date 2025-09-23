@@ -6,7 +6,7 @@ export const metadata = {
 }
 
 const Products = async () => {
-        const res = await fetch('http://localhost:3000/api/items');
+        const res = await fetch('http://localhost:3000/api/items', { cache: 'force-cache' });
         const { result } = await res.json();
 
     return (
