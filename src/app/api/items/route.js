@@ -1,3 +1,4 @@
+// get all api route
 export async function GET() {
   const data = {
     message: "Successfully get data",
@@ -8,6 +9,7 @@ export async function GET() {
   return Response.json({ data })
 }
 
+// post data api route
 export async function POST(req) {
   const result = await req.json();
  
