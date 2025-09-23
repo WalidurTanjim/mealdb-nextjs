@@ -6,13 +6,15 @@ export const metadata = {
     description: "Here user can see product he or she wants"
 }
 
+export const dynamic = "force-dynamic";
+
 const Products = async () => {
-        const res = await fetch('http://localhost:3000/api/items', { cache: 'force-cache' });
+        const res = await fetch('http://localhost:3000/api/items');
         const { result } = await res.json();
 
-        if(result.length > 10){
-            redirect('/');
-        }
+        // if(result.length > 10){
+        //     redirect('/');
+        // }
 
     return (
         <div className='products'>
