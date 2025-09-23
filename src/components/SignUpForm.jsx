@@ -1,5 +1,7 @@
 "use client";
 
+import signupUser from "@/app/actions/auth/signupUser";
+
 const SignUpForm = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -12,7 +14,12 @@ const SignUpForm = () => {
         const role = "user";
         const badge = "bronze";
         const payload = { username, email, password, confirm_password, role, badge };
-        console.log(payload);
+        // console.log(payload);
+        const result = await signupUser(payload);
+        if(result?.insertedId){
+            alert("Signup successfully done");
+            form.reset();
+        }
     }
 
     return (

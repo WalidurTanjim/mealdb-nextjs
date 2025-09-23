@@ -10,6 +10,8 @@ const navigation = [
     { name: 'Posts', href: '/posts', current: false},
     { name: 'Products', href: '/products', current: false},
     { name: 'Add Products', href: '/products/add', current: false},
+    { name: 'SignIn', href: '/signin', current: false},
+    { name: 'SignUp', href: '/signup', current: false},
 ]
 
 function classNames(...classes) {
