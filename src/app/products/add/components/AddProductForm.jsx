@@ -1,9 +1,21 @@
 "use client";
-import React from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 const AddProductForm = () => {
+    // all states
+    const [loading, setLoading] = useState(false);
+    const [disable, setDisable] = useState(false);
+
+    // all hooks
+    const router = useRouter();
+
+    // handleSubmit handler
     const handleSubmit = async(e) => {
         e.preventDefault();
+
+        setLoading(true);
+        setDisable(true);
 
         const form = e.target;
         const userName = form.userName.value;
@@ -23,8 +35,10 @@ const AddProductForm = () => {
         const {result} = await res.json();
 
         if(result?.insertedId){
+            setLoading(false);
+            setDisable(false);
             form.reset();
-            alert("User added successfully");
+            router.push('/products');
         }
     }
 
@@ -34,7 +48,7 @@ const AddProductForm = () => {
            <input type="email" name="userEmail" id="userEmail" required autoComplete='off' placeholder='Email Address' className='w-full px-5 py-1.5 outline-none border border-gray-300 rounded focus:ring-3 ring-gray-200 mb-3' /> 
            <input type="text" name="userPhoto" id="userPhoto" required autoComplete='off' placeholder='Photo URL' className='w-full px-5 py-1.5 outline-none border border-gray-300 rounded focus:ring-3 ring-gray-200 mb-3' /> 
 
-           <button type='submit' className='w-full px-5 py-1.5 outline-none border border-gray-300 rounded focus:ring-3 ring-gray-200 mb-3 bg-gray-100 hover:bg-gray-200 text-center font-medium text-slate-800'>Add Product</button>
+           <button type='submit' disabled={disable} className={`w-full px-5 py-1.5 outline-none border border-gray-300 rounded focus:ring-3 ring-gray-200 mb-3 bg-gray-100 hover:bg-gray-200 text-center font-medium text-slate-800 ${disable ? 'cursor-not-allowed' : 'cursor-pointer'}`}>{loading ? "Pending..." : "Add Product"}</button>
         </form>
     );
 };
