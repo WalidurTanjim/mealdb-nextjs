@@ -19,7 +19,8 @@ const Products = async () => {
                         result?.map(user => {
                             return (
                                 <div key={user?._id} className='border border-gray-300 rounded px-2 hover:shadow-md'>
-                                    <h1><span className='font-medium text-slate-700'>Name:</span> {user?.username}</h1>
+                                    <h1><span className='font-medium text-slate-700'>Name:</span> {user?.userName}</h1>
+                                    <h1><span className='font-medium text-slate-700'>Email:</span> {user?.userEmail}</h1>
                                 </div>
                             )
                         })
