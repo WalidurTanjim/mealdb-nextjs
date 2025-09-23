@@ -1,12 +1,11 @@
+import dbConnect from "@/lib/dbConnect";
+
 // get all api route
 export async function GET() {
-  const data = {
-    message: "Successfully get data",
-    error: false,
-    status: 200
-  }
+  const db = await dbConnect('users');
+  const result = await db.find({}).toArray();
  
-  return Response.json({ data })
+  return Response.json({ result })
 }
 
 // post data api route
