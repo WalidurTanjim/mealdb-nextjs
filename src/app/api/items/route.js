@@ -10,7 +10,9 @@ export async function GET() {
 
 // post data api route
 export async function POST(req) {
-  const result = await req.json();
+  const data = await req.json();
+  const db = await dbConnect('users');
+  const result = await db.insertOne(data);
  
   return Response.json({ result })
 }
