@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import React from 'react';
 
 export const metadata = {
@@ -9,6 +10,10 @@ const Products = async () => {
         const res = await fetch('http://localhost:3000/api/items', { cache: 'force-cache' });
         const { result } = await res.json();
 
+        if(result.length > 10){
+            redirect('/');
+        }
+
     return (
         <div className='products'>
             <div className="container mx-auto w-full px-6 lg:px-8 py-8">
@@ -18,7 +23,7 @@ const Products = async () => {
                     {
                         result?.map(user => {
                             return (
-                                <div key={user?._id} className='border border-gray-300 rounded px-2 hover:shadow-md'>
+                                <div key={user?._id} className='border border-gray-300 rounded px-2 hover:shadow-md cursor-pointer'>
                                     <h1><span className='font-medium text-slate-700'>Name:</span> {user?.userName}</h1>
                                     <h1><span className='font-medium text-slate-700'>Email:</span> {user?.userEmail}</h1>
                                 </div>
